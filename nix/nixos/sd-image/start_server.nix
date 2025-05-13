@@ -14,7 +14,7 @@
 
       serviceConfig = {
           Environment = "PYTHONUNBUFFERED=1";
-          ExecStart = "${pkgs.design.application}/bin/server -r -g 255";
+          ExecStart = "${pkgs.design.application}/bin/server -r -g 255 -c 16";
           User = "root";
           Group = "root";
       };
