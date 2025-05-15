@@ -1,6 +1,6 @@
 # program to run in systemd
 
-import config
+from . import config
 
 import time
 import wave

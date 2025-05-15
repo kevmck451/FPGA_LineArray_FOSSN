@@ -1,5 +1,5 @@
 
-import config
+from . import config
 
 import sys
 import time
