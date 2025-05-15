@@ -1,5 +1,6 @@
 # program to run in systemd
 
+import config
 
 import time
 import wave
@@ -20,9 +21,9 @@ def recorder():
     hw.set_use_fake_mics(False)
     hw.set_store_raw_data(True)
     hw.LED_off()
-    hw.set_gain(255)
+    hw.set_gain(config.gain_value)
 
-    channels = 16
+    channels = config.number_of_microphones
     button_hold_amount = 8
     button_fpga_off_hold_amount = 48
     IDLE = True

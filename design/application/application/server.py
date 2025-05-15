@@ -1,3 +1,6 @@
+
+import config
+
 import sys
 import time
 import socket
@@ -53,10 +56,10 @@ def capture(hw, sock, channels, limit_samples):
 def parse_args():
     parser = argparse.ArgumentParser(prog="server",
         description="Serve data from mic capture interface over a TCP socket.")
-    parser.add_argument('-c', '--channels', type=int, metavar="N", default=None,
+    parser.add_argument('-c', '--channels', type=int, metavar="N", default=config.number_of_microphones,
         help="Number of channels to send (from first N mics/channels), "
              "default all available.")
-    parser.add_argument('-g', '--gain', type=int, default=1,
+    parser.add_argument('-g', '--gain', type=int, default=config.gain_value,
         help="Gain value to multiply microphone data by, default 1.")
     parser.add_argument('-f', '--fake', action="store_true",
         help="Capture from fake microphones instead of real ones.")
@@ -89,6 +92,7 @@ def serve():
             hw = HW()
             capture_frequency = hw.mic_freq_hz
             print(f"capture frequency is {capture_frequency}Hz")
+
 
             hw.set_gain(args.gain)
             hw.set_use_fake_mics(args.fake)
